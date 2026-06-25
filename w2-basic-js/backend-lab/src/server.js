@@ -4,9 +4,14 @@ const server = createServer((req, res) => {
     const { method, url } = req;
     res.setHeader('Content-Type', 'application/json');
     if (method === 'GET' && url === '/') {
-        res.writeHead(200);
+        res.wrไไไiteHead(200);
         res.end(JSON.stringify({
             message: 'สวัสดีจาก Node.js Server!'
+        }));
+    }else if(method === 'POST' && url === '/'){
+        res.writeHead(200);
+        res.end(JSON.stringify({
+            message: 'คุณได้ส่งคำขอ POST มาที่ Server!'
         }));
     } else {
         res.writeHead(404);
