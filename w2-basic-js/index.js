@@ -29,4 +29,19 @@ Address: ${person.address.subdistrict}
          ${person.address.province}
          ${person.address.postalCode}`;
 
-console.log(data);
+// console.log(data);
+
+//---------------------------------------------------//
+import { PI, add, multiply, divide, subtract,calculateCircleArea, mod  } from './utils.js';
+
+const radius = 5;
+const a = 8;
+const b = 9;
+
+console.log(`PI: ${PI}`);
+console.log(`Area: ${calculateCircleArea(radius)}`);
+console.log(`Sum: ${add(a, b)}`);
+console.log(`Multiply: ${multiply(a, b)}`);
+console.log(`Divide: ${divide(a, b)}`);
+console.log(`Subtract: ${subtract(a, b)}`);
+console.log(`Mod: ${mod(a, b)}`);
