@@ -1,0 +1,16 @@
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: express_pg
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres 
+      POSTGERS_DB: product_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
