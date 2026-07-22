@@ -1,18 +1,8 @@
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
+import { Product } from "@/types/productType";
 
 const BACKEND_URL = "http://localhost:5001/api/products";
 
-/**
- * Service to handle product catalog API requests to the Express backend.
- */
 export const productService = {
-  /**
-   * Fetches all products from the catalog.
-   */
   async getProducts(): Promise<Product[]> {
     const res = await fetch(BACKEND_URL);
     if (!res.ok) {
@@ -23,9 +13,6 @@ export const productService = {
     return data.products || [];
   },
 
-  /**
-   * Fetches a single product details by id.
-   */
   async getProduct(id: number): Promise<Product> {
     const res = await fetch(`${BACKEND_URL}/${id}`);
     if (!res.ok) {
@@ -36,9 +23,6 @@ export const productService = {
     return data.product;
   },
 
-  /**
-   * Creates a new product catalog record.
-   */
   async createProduct(name: string, price: number): Promise<Product> {
     const res = await fetch(BACKEND_URL, {
       method: "POST",
@@ -55,9 +39,6 @@ export const productService = {
     return data.product;
   },
 
-  /**
-   * Modifies existing product specifications.
-   */
   async updateProduct(id: number, name: string, price: number): Promise<Product> {
     const res = await fetch(`${BACKEND_URL}/${id}`, {
       method: "PUT",
@@ -74,9 +55,6 @@ export const productService = {
     return data.product;
   },
 
-  /**
-   * Permanently terminates a product record from database.
-   */
   async deleteProduct(id: number): Promise<void> {
     const res = await fetch(`${BACKEND_URL}/${id}`, {
       method: "DELETE",
@@ -88,9 +66,6 @@ export const productService = {
     }
   },
 
-  /**
-   * Seeds the database with standard default items.
-   */
   async seedProducts(sampleProducts: Omit<Product, "id">[]): Promise<number> {
     let successCount = 0;
     for (const item of sampleProducts) {
